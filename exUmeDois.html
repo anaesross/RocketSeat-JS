@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios de Fixação.</title>
+    <style>
+        .box{
+        width: 100px;
+        height: 100px;
+        position: relative;
+        float: left;
+        }      
+    </style>
+</head>
+<body>
+<!--  1º exercício
+Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
+vermelho com 100px de altura e largura. Sempre que o botão for clicado um novo quadrado deve
+aparecer na tela. 
+2º exercício
+Utilizando o resultado do primeiro desafio, toda vez que o usuário passar o mouse por cima de
+algum quadrado troque sua cor para uma cor aleatória gerada pela função abaixo:
+-->
+<button onclick="criaCaixa()">Adicionar</button>
+    <div id="content">
+
+    </div>
+
+    <script>
+      function criaCaixa(){
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    
+        var boxElement = document.createElement('div');
+        boxElement.setAttribute('class', 'box');
+        boxElement.setAttribute('style', 'background-color:#'+randomColor +';');
+        boxElement.setAttribute('id', "a"+randomColor);
+        boxElement.setAttribute("onclick", 'mudarCor(this)');
+
+        var criarElemento = document.querySelector('#content');
+        criarElemento.appendChild(boxElement);
+
+        } 
+        function mudarCor(elemento){
+            var boxId = elemento.id;
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+
+            var boxSelector = document.querySelector("#"+boxId);
+            boxSelector.setAttribute('style', 'background-color:#'+randomColor +';');
+
+            console.log(boxId);
+        }
+
+    </script>
+</body>
+</html>
